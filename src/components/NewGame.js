@@ -30,6 +30,12 @@ export default function FormDialog() {
         setChecked(newChecked);
     };
 
+    const changeDeck = (value) => () => {
+        setDeck(value);
+
+    };
+
+
 
 
     return (
@@ -38,7 +44,6 @@ export default function FormDialog() {
                 <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
                 <List sx={{ width: '100%', maxHeight: 100, bgcolor: 'background.paper' }}>
                     {Decks.map((value) => {
-                        { console.log(value.name) }
                         const labelId = `checkbox-list-label-${value.name}`;
 
                         return (
@@ -46,7 +51,7 @@ export default function FormDialog() {
                                 key={value.name}
                                 disablePadding
                             >
-                                <IconButton edge="end" aria-label="comments" >
+                                <IconButton edge="end" aria-label="comments" onClick={changeDeck(value)}>
                                     <CommentIcon />
                                 </IconButton>
                                 <ListItemButton role={undefined} dense>
