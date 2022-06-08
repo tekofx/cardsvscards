@@ -18,7 +18,7 @@ const bull = (
 export default function BasicCard(props) {
     return (
         <ThemeProvider theme={Theme}>
-            <Card variant='outlined' sx={{ maxWidth: 275 }}>
+            <Card variant='outlined' sx={{ minWidth: 200, minHeight: 300 }}>
                 <CardContent>
                     <Typography >
                         {props.text}

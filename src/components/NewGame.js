@@ -8,9 +8,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
-import { Grid, Typography } from '@mui/material';
+import { Button, Grid, ThemeProvider, Typography } from '@mui/material';
 import CardsList from './CardsList';
 import Decks from '../Cards.json'
+import Theme from '../Theme';
 
 
 export default function FormDialog() {
@@ -35,47 +36,46 @@ export default function FormDialog() {
 
     };
 
-
-
-
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={4}>
-                <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
-                <List sx={{ width: '100%', maxHeight: 100, bgcolor: 'background.paper' }}>
-                    {Decks.map((value) => {
-                        const labelId = `checkbox-list-label-${value.name}`;
+        <ThemeProvider theme={Theme}>
+            <Grid container spacing={3}>
+                <Grid item xs={4}>
+                    <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
+                    <List sx={{ width: '100%', maxHeight: 100, bgcolor: 'background.paper' }}>
+                        {Decks.map((value) => {
+                            const labelId = `checkbox-list-label-${value.name}`;
 
-                        return (
-                            <ListItem
-                                key={value.name}
-                                disablePadding
-                            >
-                                <IconButton edge="end" aria-label="comments" onClick={changeDeck(value)}>
-                                    <CommentIcon />
-                                </IconButton>
-                                <ListItemButton role={undefined} dense>
-                                    <ListItemIcon onClick={handleToggle(value.name)}>
-                                        <Checkbox
-                                            edge="start"
-                                            checked={checked.indexOf(value.name) !== -1}
-                                            tabIndex={-1}
-                                            disableRipple
-                                            inputProps={{ 'aria-labelledby': labelId }}
-                                        />
-                                    </ListItemIcon>
-                                    <ListItemText id={labelId} primary={value.name} />
-                                </ListItemButton>
-                            </ListItem>
-                        );
-                    })}
-                </List>
-            </Grid>
-            <Grid item xs={8}>
-                <Typography>Mazo {deck.name}</Typography>
-                <CardsList deck={deck.cards} />
+                            return (
+                                <ListItem
+                                    key={value.name}
+                                    disablePadding
+                                >
+                                    <ListItemButton role={undefined} dense onClick={changeDeck(value)}>
+                                        <ListItemIcon onClick={handleToggle(value.name)}>
+                                            <Checkbox
+                                                edge="start"
+                                                checked={checked.indexOf(value.name) !== -1}
+                                                tabIndex={-1}
+                                                disableRipple
+                                                inputProps={{ 'aria-labelledby': labelId }}
+                                            />
+                                        </ListItemIcon>
+                                        <ListItemText id={labelId} primary={value.name} />
+                                    </ListItemButton>
+                                </ListItem>
+                            );
+                        })}
+                    </List>
+                </Grid>
+                <Grid item xs={8}>
+                    <Typography>Mazo {deck.name}</Typography>
+                    <CardsList deck={deck.cards} />
 
+                </Grid>
+                <Grid item xs={12}>
+                    <Button>Aceptar</Button>
+                </Grid>
             </Grid>
-        </Grid>
+        </ThemeProvider>
     );
 }
