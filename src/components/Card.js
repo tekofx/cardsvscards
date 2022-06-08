@@ -15,13 +15,13 @@ const bull = (
     </Box>
 );
 
-export default function BasicCard() {
+export default function BasicCard(props) {
     return (
         <ThemeProvider theme={Theme}>
             <Card variant='outlined' sx={{ maxWidth: 275 }}>
                 <CardContent>
                     <Typography >
-                        Lorem ipsum dolor
+                        {props.text}
                     </Typography>
                 </CardContent>
             </Card>

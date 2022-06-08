@@ -6,7 +6,7 @@ import { Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 import '../index.css'
 import { Container } from "@mui/system";
-import NewGameDialog from '../components/NewGame';
+import NewGame from '../components/NewGame';
 import { useState } from "react";
 
 function Home() {
@@ -21,8 +21,9 @@ function Home() {
             <Typography>Elige una partida</Typography>
             <Button onClick={toggleNewGame}>Crear partida</Button>
             <Button>Unirse a partida</Button>
+            {newGame ? <NewGame /> : null}
 
-            {newGame ? <NewGameDialog /> : null}
+
         </Container>
     );
 }
