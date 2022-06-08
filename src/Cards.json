@@ -1,0 +1,46 @@
+{
+    "Furry": [
+        {
+            "id": 0,
+            "content": "awa"
+        },
+        {
+            "id": 1,
+            "content": "ewe"
+        },
+        {
+            "id": 2,
+            "content": "iwi"
+        },
+        {
+            "id": 3,
+            "content": "owo"
+        },
+        {
+            "id": 4,
+            "content": "uwu"
+        }
+    ],
+    "Furro": [
+        {
+            "id": 0,
+            "content": "awa"
+        },
+        {
+            "id": 1,
+            "content": "ewe"
+        },
+        {
+            "id": 2,
+            "content": "iwi"
+        },
+        {
+            "id": 3,
+            "content": "owo"
+        },
+        {
+            "id": 4,
+            "content": "uwu"
+        }
+    ]
+}
