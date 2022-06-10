@@ -1,6 +1,34 @@
 [
     {
         "id": 0,
-        "name": "uwu"
+        "name": "Deck1",
+        "cards": [
+            {
+                "id": 0,
+                "type": "black",
+                "content": "uwu"
+            },
+            {
+                "id": 1,
+                "type": "white",
+                "content": "owo"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "name": "Deck2",
+        "cards": [
+            {
+                "id": 0,
+                "type": "black",
+                "content": "awa"
+            },
+            {
+                "id": 1,
+                "type": "white",
+                "content": "ewe"
+            }
+        ]
     }
 ]

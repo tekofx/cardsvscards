@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.listen(port);
 
 
-app.use("/", require("./routes/decks"));
+app.use("/decks", require("./routes/decks"));
 
 
 console.log("Server Listening at http://localhost:" + port);
