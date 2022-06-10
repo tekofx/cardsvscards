@@ -15,6 +15,8 @@ app.listen(port);
 
 
 app.use("/decks", require("./routes/decks"));
+app.use("/games", require("./routes/games"));
+
 
 
 console.log("Server Listening at http://localhost:" + port);
