@@ -7,7 +7,6 @@ export const getDecks = async (user) => {
         .then((response) => {
 
             data = response.data;
-            console.log(response)
         })
         .catch((error) => {
             if (error.response) {

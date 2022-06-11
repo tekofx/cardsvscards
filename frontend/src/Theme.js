@@ -53,13 +53,14 @@ var Theme = createTheme({
             'Arial',
         ].join(','),
 
-        appBar: {
+        whiteCard: {
             fontSize: '1.5rem',
-            fontWeight: 'bold',
-            color: '#fff',
-            fontStyle: 'italic',
-            textDecoration: 'none',
+            color: '#000',
         },
+        blackCard: {
+            fontSize: '1.5rem',
+            color: '#fff',
+        }
     },
 
 });

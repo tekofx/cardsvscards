@@ -1,4 +1,3 @@
-import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -10,13 +9,15 @@ import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
 import { Button, Grid, ThemeProvider, Typography } from '@mui/material';
 import CardsList from './CardsList';
-import Decks from '../Cards.json'
 import Theme from '../Theme';
+import { useEffect, useState } from 'react';
+import { getDecks } from '../connection/connection';
 
 
 export default function FormDialog() {
-    const [checked, setChecked] = React.useState([0]);
-    const [deck, setDeck] = React.useState(Decks[0]);
+    const [checked, setChecked] = useState([0]);
+    const [deck, setDeck] = useState({ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] });
+    const [decks, setDecks] = useState([{ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] }, { name: "deck2", id: "2" }]);
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -35,6 +36,20 @@ export default function FormDialog() {
         setDeck(value);
 
     };
+    const cargarMensajes = async () => {
+        var aux = await getDecks();
+        setDecks(aux);
+        setDeck(aux[0]);
+
+    }
+    useEffect(() => {
+        const fetchData = async () => {
+            await cargarMensajes();
+        }
+        fetchData();
+
+    }, []);
+
 
     return (
         <ThemeProvider theme={Theme}>
@@ -42,7 +57,7 @@ export default function FormDialog() {
                 <Grid item xs={4}>
                     <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
                     <List sx={{ width: '100%', maxHeight: 100, bgcolor: 'background.paper' }}>
-                        {Decks.map((value) => {
+                        {decks.map((value) => {
                             const labelId = `checkbox-list-label-${value.name}`;
 
                             return (

@@ -2,93 +2,111 @@
     {
         "id": 0,
         "name": "Deck1",
-        "cards": {
-            "black": [
-                {
-                    "id": 0,
-                    "content": "w"
-                },
-                {
-                    "id": 1,
-                    "content": "x"
-                },
-                {
-                    "id": 2,
-                    "content": "y"
-                },
-                {
-                    "id": 3,
-                    "content": "z"
-                }
-            ],
-            "white": [
-                {
-                    "id": 4,
-                    "content": "h"
-                },
-                {
-                    "id": 5,
-                    "content": "i"
-                },
-                {
-                    "id": 6,
-                    "content": "m"
-                },
-                {
-                    "id": 7,
-                    "content": "n"
-                },
-                {
-                    "id": 8,
-                    "content": "ñ"
-                },
-                {
-                    "id": 9,
-                    "content": "o"
-                }
-            ]
-        }
+        "cards": [
+            {
+                "type": "black",
+                "id": 0,
+                "content": "a"
+            },
+            {
+                "type": "black",
+                "id": 1,
+                "content": "b"
+            },
+            {
+                "type": "black",
+                "id": 2,
+                "content": "c"
+            },
+            {
+                "type": "black",
+                "id": 3,
+                "content": "d"
+            },
+            {
+                "type": "white",
+                "id": 4,
+                "content": "e"
+            },
+            {
+                "type": "black",
+                "id": 5,
+                "content": "f"
+            },
+            {
+                "id": 6,
+                "content": "g"
+            },
+            {
+                "type": "black",
+                "id": 7,
+                "content": "h"
+            },
+            {
+                "type": "black",
+                "id": 8,
+                "content": "i"
+            },
+            {
+                "type": "black",
+                "id": 9,
+                "content": "j"
+            }
+        ]
     },
     {
         "id": 1,
         "name": "Deck2",
-        "cards": {
-            "black": [
-                {
-                    "id": 0,
-                    "content": "a"
-                },
-                {
-                    "id": 1,
-                    "content": "b"
-                },
-                {
-                    "id": 2,
-                    "content": "c"
-                },
-                {
-                    "id": 3,
-                    "content": "d"
-                }
-            ],
-            "white": [
-                {
-                    "id": 4,
-                    "content": "a"
-                },
-                {
-                    "id": 5,
-                    "content": "b"
-                },
-                {
-                    "id": 6,
-                    "content": "c"
-                },
-                {
-                    "id": 7,
-                    "content": "d"
-                }
-            ]
-        }
+        "cards": [
+            {
+                "type": "black",
+                "id": 0,
+                "content": "k"
+            },
+            {
+                "type": "black",
+                "id": 1,
+                "content": "l"
+            },
+            {
+                "type": "black",
+                "id": 2,
+                "content": "m"
+            },
+            {
+                "type": "black",
+                "id": 3,
+                "content": "n"
+            },
+            {
+                "type": "white",
+                "id": 4,
+                "content": "ñ"
+            },
+            {
+                "type": "black",
+                "id": 5,
+                "content": "o"
+            },
+            {
+                "id": 6,
+                "content": "p"
+            },
+            {
+                "type": "black",
+                "id": 7,
+                "content": "q"
+            },
+            {
+                "type": "black",
+                "id": 8,
+                "content": "r"
+            },
+            {
+                "type": "black",
+                "id": 9,
+                "content": "s"
+            }
+        ]
     }
 ]

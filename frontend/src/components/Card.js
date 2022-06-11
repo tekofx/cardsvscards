@@ -16,11 +16,23 @@ const bull = (
 );
 
 export default function BasicCard(props) {
+
+    var type = props.type;
+    var backgroundColor = '';
+    var typographyVariant = '';
+    if (type === "black") {
+        backgroundColor = 'black';
+        typographyVariant = 'blackCard';
+    } else {
+        backgroundColor = 'white';
+        typographyVariant = 'whiteCard';
+    }
+
     return (
         <ThemeProvider theme={Theme}>
-            <Card variant='outlined' sx={{ minWidth: 200, minHeight: 300 }}>
+            <Card style={{ backgroundColor: backgroundColor }} variant='outlined' sx={{ minWidth: 200, minHeight: 300 }} >
                 <CardContent>
-                    <Typography >
+                    <Typography variant={typographyVariant}>
                         {props.text}
                     </Typography>
                 </CardContent>
