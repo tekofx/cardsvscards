@@ -20,5 +20,10 @@ router.post('/', async function (req, res) {
     return res.status(result.status).send(result.send);
 });
 
+// Join game
+router.put('/:id/join', async function (req, res) {
+    var result = data.joinGame(req.params.id, req.body.username);
+    return res.status(result.status).send(result.send);
+});
 
 module.exports = router;
