@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { getDecks, createGame } from '../connection/connection';
 
 
-export default function FormDialog() {
+export default function NewGameCreation() {
     const [checked, setChecked] = useState([]);
     const [deck, setDeck] = useState({ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] });
     const [decks, setDecks] = useState([{ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] }, { name: "deck2", id: "2" }]);
