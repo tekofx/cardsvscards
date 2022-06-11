@@ -11,19 +11,31 @@ import { Button, Grid, ThemeProvider, Typography } from '@mui/material';
 import CardsList from './CardsList';
 import Theme from '../Theme';
 import { useEffect, useState } from 'react';
-import { getDecks, createGame } from '../connection/connection';
+import { joinGame } from '../connection/connection';
 
 
 export default function JoinGame() {
+    const [gameID, setGameID] = useState("");
+
+
+    const handleGameIDInput = (event) => {
+        event.preventDefault();
+        setGameID(event.target.value);
+    }
+
+    const handleJoinGame = async (event) => {
+        await joinGame(gameID);
+    }
+
 
     return (
         <ThemeProvider theme={Theme}>
             <Grid container>
                 <Grid item xs={12}>
-                    <TextField label="GameID"></TextField>
+                    <TextField onSubmit={handleGameIDInput} label="GameID"></TextField>
                 </Grid>
                 <Grid item xs={12}>
-                    <Button>Aceptar</Button>
+                    <Button onClick={handleJoinGame}>Aceptar</Button>
                 </Grid>
             </Grid>
         </ThemeProvider>
