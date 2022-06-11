@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const games = require('../games.json')
 const decksJSON = require('../decks.json')
+const data = require('../model/data')
 
 router.get('/', async function (req, res) {
     res.header("Content-Type", 'application/json');
@@ -9,17 +10,15 @@ router.get('/', async function (req, res) {
 });
 
 router.get('/:id', async function (req, res) {
-    var deckId = parseInt(req.params.id);
     res.header("Content-Type", 'application/json');
-    // Get from JSON the deck with the id
-    var deck = games.find(deck => deck.id === deckId);
-    return res.send(JSON.stringify(deck));
+    var game = data.getGame(req.params.id);
+    return res.send(JSON.stringify(game));
 });
-
 
 // Create a game
 router.post('/', async function (req, res) {
-    var gameId = 1;// TODO: get a free id
+    // Get free game id
+    var gameId = games.length + 1;
     var decks = req.body.decks;
     var user = req.body.username;
 
@@ -29,7 +28,7 @@ router.post('/', async function (req, res) {
         const random = Math.floor(Math.random() * decks.length);
         var deckId = decks[random];
         var deck = decksJSON.find(deck => deck.id === deckId);
-        var card = deck.cards[Math.floor(Math.random() * deck.cards.length)];
+        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
         cards.push(card);
     }
 
@@ -38,12 +37,26 @@ router.post('/', async function (req, res) {
         id: gameId,
         decks: decks,
         users: [user],
-
     }
     games.push(game);
-    console.log(JSON.stringify(game));
+    return res.status(200).send(games);
+});
 
-    return res.status(200).send("Game created");
+router.put('/:id/join', async function (req, res) {
+    var gameId = parseInt(req.params.id);
+    var game = games.find(game => game.id === gameId);
+    var user = req.body.username;
+    var cards = [];
+    for (var i = 0; i < 7; i++) {
+        const random = Math.floor(Math.random() * game.decks.length);
+        var deckId = game.decks[random];
+        var deck = decksJSON.find(deck => deck.id === deckId);
+        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
+        cards.push(card);
+    }
+    var user = { id: game.users.length, owner: false, username: user, cards: cards };
+    game.users.push(user);
+    return res.status(200).send(game);
 });
 
 module.exports = router;
