@@ -67,6 +67,13 @@ function joinGame(gameId, username) {
     return { "status": 200, "send": game };
 }
 
+function startGame(gameId) {
+    var game = getGame(gameId);
+    // Disorder users
+    game.users = game.users.sort(() => Math.random() - 0.5);
+    return { "status": 200, "send": game };
+}
+
 module.exports = {
     getDecks,
     getDeck,
@@ -75,4 +82,5 @@ module.exports = {
     getGame,
     createGame,
     joinGame,
+    startGame,
 }

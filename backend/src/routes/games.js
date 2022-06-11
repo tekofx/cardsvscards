@@ -26,4 +26,10 @@ router.put('/:id/join', async function (req, res) {
     return res.status(result.status).send(result.send);
 });
 
+// Start game
+router.put('/:id/start', async function (req, res) {
+    var result = data.startGame(req.params.id);
+    return res.status(result.status).send(result.send);
+});
+
 module.exports = router;
