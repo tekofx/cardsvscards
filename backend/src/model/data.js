@@ -26,26 +26,44 @@ function getGame(id) {
     return games.find(game => game.id === parseInt(id));
 }
 
-function createGame(decks, username) {
+function getRandomCards(decksID) {
+    // Get random cards from decks without repeating
+    var cards = [];
+    var cont = 0;
+    while (cont < 7) {
+        var deckID = decksID[Math.floor(Math.random() * decksID.length)];
+        var deck = decksJSON.find(deck => deck.id === decksID[deckID]);
+        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
+        if (!cards.includes(card)) {
+            cards.push(card);
+            cont++;
+        }
+    }
+
+    return cards;
+}
+
+function createGame(decksIDs, username) {
     var gameId = games.length;
 
     // Select random cards from decks
-    var cards = [];
-    for (var i = 0; i < 7; i++) {
-        const random = Math.floor(Math.random() * decks.length);
-        var deckId = decks[random];
-        var deck = decksJSON.find(deck => deck.id === deckId);
-        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
-        cards.push(card);
-    }
+    var cards = getRandomCards(decksIDs);
 
     user = { id: 0, owner: true, username: username, cards: cards };
     var game = {
         id: gameId,
-        decks: decks,
+        decks: decksIDs,
         users: [user],
     }
     games.push(game);
+    return { "status": 200, "send": game };
+}
+
+function addUserToGame(gameId, username) {
+    var game = games.find(game => game.id === gameId);
+    var cards = getRandomCards(game.decks);
+    var user = { id: game.users.length, owner: false, username: username, cards: [] };
+    game.users.push(user);
     return { "status": 200, "send": game };
 }
 

@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const games = require('../games.json')
-const decksJSON = require('../decks.json')
 const data = require('../model/data')
 
 router.get('/', async function (req, res) {
