@@ -1,20 +1,22 @@
-const decks = require('../decks.json')
+const decksJSON = require('../decks.json')
 const games = require('../games.json')
 
 /*              Decks              */
 function getDecks() {
-    return decks;
+    return decksJSON;
 }
 
 function getDeck(id) {
-    return decks.find(deck => deck.id === id);
+    return decksJSON.find(deck => deck.id === id);
 }
 
-function getDeckBlackCards(deck) {
+function getDeckBlackCards(deckID) {
+    var deck = decksJSON.find(deck => deck.id === deckID);
     return deck.cards.black;
 }
 
-function getDeckWhiteCards(deck) {
+function getDeckWhiteCards(deckID) {
+    var deck = decksJSON.find(deck => deck.id === deckID);
     return deck.cards.white;
 }
 
@@ -24,11 +26,27 @@ function getGame(id) {
     return games.find(game => game.id === parseInt(id));
 }
 
-function createGame(game) {
-    var gameId = games.length + 1;
-    game.id = gameId;
+function createGame(decks, username) {
+    var gameId = games.length;
+
+    // Select random cards from decks
+    var cards = [];
+    for (var i = 0; i < 7; i++) {
+        const random = Math.floor(Math.random() * decks.length);
+        var deckId = decks[random];
+        var deck = decksJSON.find(deck => deck.id === deckId);
+        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
+        cards.push(card);
+    }
+
+    user = { id: 0, owner: true, username: username, cards: cards };
+    var game = {
+        id: gameId,
+        decks: decks,
+        users: [user],
+    }
     games.push(game);
-    return game;
+    return { "status": 200, "send": game };
 }
 
 module.exports = {
@@ -36,5 +54,6 @@ module.exports = {
     getDeck,
     getDeckBlackCards,
     getDeckWhiteCards,
-    getGame
+    getGame,
+    createGame
 }
