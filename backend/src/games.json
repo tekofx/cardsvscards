@@ -1,0 +1,23 @@
+[
+    {
+        "id": 0,
+        "decks": [
+            0,
+            1
+        ],
+        "users": [
+            {
+                "id": 0,
+                "username": "user1",
+                "owner": false,
+                "points": 0,
+                "cards": [
+                    {
+                        "deck": 0,
+                        "card": 1
+                    }
+                ]
+            }
+        ]
+    }
+]

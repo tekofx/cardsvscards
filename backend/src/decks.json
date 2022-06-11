@@ -1,0 +1,94 @@
+[
+    {
+        "id": 0,
+        "name": "Deck1",
+        "cards": {
+            "black": [
+                {
+                    "id": 0,
+                    "content": "w"
+                },
+                {
+                    "id": 1,
+                    "content": "x"
+                },
+                {
+                    "id": 2,
+                    "content": "y"
+                },
+                {
+                    "id": 3,
+                    "content": "z"
+                }
+            ],
+            "white": [
+                {
+                    "id": 4,
+                    "content": "h"
+                },
+                {
+                    "id": 5,
+                    "content": "i"
+                },
+                {
+                    "id": 6,
+                    "content": "m"
+                },
+                {
+                    "id": 7,
+                    "content": "n"
+                },
+                {
+                    "id": 8,
+                    "content": "ñ"
+                },
+                {
+                    "id": 9,
+                    "content": "o"
+                }
+            ]
+        }
+    },
+    {
+        "id": 1,
+        "name": "Deck2",
+        "cards": {
+            "black": [
+                {
+                    "id": 0,
+                    "content": "a"
+                },
+                {
+                    "id": 1,
+                    "content": "b"
+                },
+                {
+                    "id": 2,
+                    "content": "c"
+                },
+                {
+                    "id": 3,
+                    "content": "d"
+                }
+            ],
+            "white": [
+                {
+                    "id": 4,
+                    "content": "a"
+                },
+                {
+                    "id": 5,
+                    "content": "b"
+                },
+                {
+                    "id": 6,
+                    "content": "c"
+                },
+                {
+                    "id": 7,
+                    "content": "d"
+                }
+            ]
+        }
+    }
+]
