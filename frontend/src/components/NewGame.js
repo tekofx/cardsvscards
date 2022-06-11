@@ -15,7 +15,7 @@ import { getDecks } from '../connection/connection';
 
 
 export default function FormDialog() {
-    const [checked, setChecked] = useState([0]);
+    const [checked, setChecked] = useState([]);
     const [deck, setDeck] = useState({ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] });
     const [decks, setDecks] = useState([{ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] }, { name: "deck2", id: "2" }]);
 
@@ -30,21 +30,23 @@ export default function FormDialog() {
         }
 
         setChecked(newChecked);
+        console.log(checked);
     };
 
     const changeDeck = (value) => () => {
         setDeck(value);
 
     };
-    const cargarMensajes = async () => {
+    const loadDecks = async () => {
         var aux = await getDecks();
         setDecks(aux);
         setDeck(aux[0]);
 
     }
+
     useEffect(() => {
         const fetchData = async () => {
-            await cargarMensajes();
+            await loadDecks();
         }
         fetchData();
 
@@ -56,7 +58,7 @@ export default function FormDialog() {
             <Grid container spacing={3}>
                 <Grid item xs={4}>
                     <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
-                    <List sx={{ width: '100%', maxHeight: 100, bgcolor: 'background.paper' }}>
+                    <List sx={{ width: '100%', maxHeight: '50%', bgcolor: 'background.paper' }}>
                         {decks.map((value) => {
                             const labelId = `checkbox-list-label-${value.name}`;
 
