@@ -55,6 +55,7 @@ export const createGame = async (username, decks) => {
 
 export const joinGame = async (gameId, username) => {
     let data;
+    gameId = String(gameId);
     await axios
         .post("http://localhost:3001/games/:" + gameId + "/join", {
             username: username

@@ -16,15 +16,20 @@ import { joinGame } from '../connection/connection';
 
 export default function JoinGame() {
     const [gameID, setGameID] = useState("");
-
+    const [username, setUsername] = useState("");
 
     const handleGameIDInput = (event) => {
         event.preventDefault();
         setGameID(event.target.value);
     }
 
+    const handleUsernameInput = (event) => {
+        event.preventDefault();
+        setUsername(event.target.value);
+    }
+
     const handleJoinGame = async (event) => {
-        await joinGame(gameID);
+        await joinGame(gameID, username);
     }
 
 
@@ -33,6 +38,8 @@ export default function JoinGame() {
             <Grid container>
                 <Grid item xs={12}>
                     <TextField onSubmit={handleGameIDInput} label="GameID"></TextField>
+                    <TextField onSubmit={handleUsernameInput} label="Username"></TextField>
+
                 </Grid>
                 <Grid item xs={12}>
                     <Button onClick={handleJoinGame}>Aceptar</Button>
