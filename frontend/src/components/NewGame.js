@@ -11,13 +11,14 @@ import { Button, Grid, ThemeProvider, Typography } from '@mui/material';
 import CardsList from './CardsList';
 import Theme from '../Theme';
 import { useEffect, useState } from 'react';
-import { getDecks } from '../connection/connection';
+import { getDecks, createGame } from '../connection/connection';
 
 
 export default function FormDialog() {
     const [checked, setChecked] = useState([]);
     const [deck, setDeck] = useState({ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] });
     const [decks, setDecks] = useState([{ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] }, { name: "deck2", id: "2" }]);
+    const [username, setUsername] = useState("");
 
     const handleToggle = (value) => () => {
         const currentIndex = checked.indexOf(value);
@@ -30,8 +31,12 @@ export default function FormDialog() {
         }
 
         setChecked(newChecked);
-        console.log(checked);
     };
+
+    const handleUsernameInput = (event) => {
+        event.preventDefault();
+        setUsername(event.target.value);
+    }
 
     const changeDeck = (value) => () => {
         setDeck(value);
@@ -42,6 +47,12 @@ export default function FormDialog() {
         setDecks(aux);
         setDeck(aux[0]);
 
+    }
+
+    const createGameButton = async (event) => {
+        // Get a list of id of decks
+        console.log(checked);
+        await createGame(username, checked);
     }
 
     useEffect(() => {
@@ -57,21 +68,21 @@ export default function FormDialog() {
         <ThemeProvider theme={Theme}>
             <Grid container spacing={3}>
                 <Grid item xs={4}>
-                    <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" />
+                    <TextField autoFocus margin="dense" id="name" fullWidth label="Username" type="username" variant="standard" onChange={handleUsernameInput} />
                     <List sx={{ width: '100%', maxHeight: '50%', bgcolor: 'background.paper' }}>
                         {decks.map((value) => {
                             const labelId = `checkbox-list-label-${value.name}`;
 
                             return (
                                 <ListItem
-                                    key={value.name}
+                                    key={value.id}
                                     disablePadding
                                 >
                                     <ListItemButton role={undefined} dense onClick={changeDeck(value)}>
-                                        <ListItemIcon onClick={handleToggle(value.name)}>
+                                        <ListItemIcon onClick={handleToggle(value.id)}>
                                             <Checkbox
                                                 edge="start"
-                                                checked={checked.indexOf(value.name) !== -1}
+                                                checked={checked.indexOf(value.id) !== -1}
                                                 tabIndex={-1}
                                                 disableRipple
                                                 inputProps={{ 'aria-labelledby': labelId }}
@@ -83,14 +94,12 @@ export default function FormDialog() {
                             );
                         })}
                     </List>
+                    <Button onClick={createGameButton}>Aceptar</Button>
                 </Grid>
                 <Grid item xs={8}>
                     <Typography>Mazo {deck.name}</Typography>
                     <CardsList deck={deck.cards} />
 
-                </Grid>
-                <Grid item xs={12}>
-                    <Button>Aceptar</Button>
                 </Grid>
             </Grid>
         </ThemeProvider>

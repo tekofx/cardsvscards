@@ -4,22 +4,22 @@
         "name": "Deck1",
         "cards": [
             {
-                "type": "black",
+                "type": "white",
                 "id": 0,
                 "content": "a"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 1,
                 "content": "b"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 2,
                 "content": "c"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 3,
                 "content": "d"
             },
@@ -64,12 +64,12 @@
                 "content": "k"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 1,
                 "content": "l"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 2,
                 "content": "m"
             },
@@ -84,11 +84,12 @@
                 "content": "ñ"
             },
             {
-                "type": "black",
+                "type": "white",
                 "id": 5,
                 "content": "o"
             },
             {
+                "type": "black",
                 "id": 6,
                 "content": "p"
             },

@@ -33,7 +33,10 @@ function getRandomCards(decksID) {
     while (cont < 7) {
         var deckID = decksID[Math.floor(Math.random() * decksID.length)];
         var deck = decksJSON.find(deck => deck.id === decksID[deckID]);
-        var card = deck.cards.white[Math.floor(Math.random() * deck.cards.white.length)];
+        /* console.log(deck) */
+        var whiteCards = deck.cards.filter(card => card.type === "white");
+
+        var card = whiteCards[Math.floor(Math.random() * whiteCards.length)];
         if (!cards.includes(card)) {
             cards.push(card);
             cont++;

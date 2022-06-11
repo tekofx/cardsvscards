@@ -17,6 +17,7 @@ router.get('/:id', async function (req, res) {
 // Create a game
 router.post('/', async function (req, res) {
     var result = data.createGame(req.body.decks, req.body.username);
+    console.log(result)
     return res.status(result.status).send(result.send);
 });
 
