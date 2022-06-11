@@ -12,6 +12,26 @@
                 "id": 1,
                 "type": "white",
                 "content": "owo"
+            },
+            {
+                "id": 2,
+                "type": "black",
+                "content": "awa"
+            },
+            {
+                "id": 3,
+                "type": "white",
+                "content": "hola"
+            },
+            {
+                "id": 4,
+                "type": "black",
+                "content": "adios"
+            },
+            {
+                "id": 5,
+                "type": "white",
+                "content": "hello"
             }
         ]
     },
