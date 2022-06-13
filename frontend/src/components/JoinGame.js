@@ -37,14 +37,14 @@ export default function JoinGame() {
         <ThemeProvider theme={Theme}>
             <Grid container>
                 <Grid item xs={12}>
-                    <TextField onSubmit={handleGameIDInput} label="GameID"></TextField>
-                    <TextField onSubmit={handleUsernameInput} label="Username"></TextField>
+                    <TextField onChange={handleGameIDInput} label="GameID"></TextField>
+                    <TextField onChange={handleUsernameInput} label="Username"></TextField>
 
                 </Grid>
                 <Grid item xs={12}>
                     <Button onClick={handleJoinGame}>Aceptar</Button>
                 </Grid>
-            </Grid>
-        </ThemeProvider>
+            </Grid >
+        </ThemeProvider >
     );
 }
