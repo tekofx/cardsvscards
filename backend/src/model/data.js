@@ -69,7 +69,7 @@ function joinGame(gameId, username) {
     var cards = getRandomCards(game.decks, "white");
     var user = { id: game.users.length, owner: false, username: username, cards: cards };
     game.users.push(user);
-    return { "status": 200, "send": game };
+    return { "status": 200, "send": game, "user": user };
 }
 
 function startGame(gameId) {
@@ -84,6 +84,11 @@ function getUsers(gameId) {
     return game.users;
 }
 
+function getUser(gameId, userId) {
+    var game = getGame(gameId);
+    return game.users.find(user => user.id === userId);
+}
+
 module.exports = {
     getDecks,
     getDeck,
@@ -93,5 +98,5 @@ module.exports = {
     createGame,
     joinGame,
     startGame,
-    getUsers
+    getUsers,
 }

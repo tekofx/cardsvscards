@@ -17,25 +17,23 @@ router.get('/:id', async function (req, res) {
 // Create a game
 router.post('/', async function (req, res) {
     var result = data.createGame(req.body.decks, req.body.username);
-    console.log(result)
-    return res.status(result.status).send(result.send);
+    console.log(result.send.users[0].id)
+    return res
+        .cookie('gameId', result.send.id)
+        .cookie('userId', result.send.users[0].id)
+        .status(result.status)
+        .send(result.send);
 });
 
 // Join game
 router.put('/:id/join', async function (req, res) {
     var result = data.joinGame(req.params.id, req.body.username);
+    var user = result.user;
     return res.contentType('json')
-        .cookie('uwu', 'uwu', {
-            maxAge: 1000 * 60 * 60 * 24 * 7,
-            httpOnly: true,
-            sameSite: true,
-            secure: true
-        })
         .cookie('gameId', req.params.id)
-        .cookie('username', req.body.username)
+        .cookie('userId', user.id)
         .status(result.status)
         .send(result.send)
-
 });
 
 // Start game

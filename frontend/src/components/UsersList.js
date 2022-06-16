@@ -16,7 +16,6 @@ const cookies = new Cookies();
 export default function CardsList() {
     const [users, setUsers] = useState([]);
     const loadUsers = async () => {
-        console.log(cookies.get('gameId'));
         var aux = await getUsers(cookies.get('gameId'));
         setUsers(aux);
 

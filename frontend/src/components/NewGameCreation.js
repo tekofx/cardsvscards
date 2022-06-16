@@ -55,7 +55,6 @@ export default function NewGameCreation() {
 
     const createGameButton = async (event) => {
         // Get a list of id of decks
-        console.log(checked);
         await createGame(username, checked);
         navigate('/lobby')
 
