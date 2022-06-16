@@ -1,4 +1,5 @@
 import Home from './pages/Home';
+import Game from './pages/Game';
 import Theme from './Theme';
 import { ThemeProvider } from '@mui/material/styles';
 import {
@@ -17,6 +18,7 @@ function App() {
         <Routes >
           <Route path='/' element={<Navigate to="/home" />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/game' element={<Game />} />
         </Routes>
       </Router>
     </ThemeProvider>

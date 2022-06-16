@@ -12,9 +12,13 @@ import CardsList from './CardsList';
 import Theme from '../Theme';
 import { useEffect, useState } from 'react';
 import { joinGame } from '../connection/connection';
+import { useNavigate } from 'react-router-dom';
+import Cookies from "universal-cookie";
 
+const cookies = new Cookies();
 
 export default function JoinGame() {
+    const navigate = useNavigate();
     const [gameID, setGameID] = useState("");
     const [username, setUsername] = useState("");
 
@@ -30,6 +34,7 @@ export default function JoinGame() {
 
     const handleJoinGame = async (event) => {
         await joinGame(gameID, username);
+        navigate("/game");
     }
 
 

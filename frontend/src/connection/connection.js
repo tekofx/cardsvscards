@@ -56,12 +56,20 @@ export const createGame = async (username, decks) => {
 export const joinGame = async (gameId, username) => {
     let data;
     gameId = String(gameId);
-    await axios
-        .put("http://localhost:3001/games/" + gameId + "/join", {
-            username: username
-        })
+    await axios.put("http://localhost:3001/games/" + gameId + "/join", {
+        username: username
+    }, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        },
+        'withCredentials': true
+    }
+
+    )
         .then((response) => {
-            data = response.data;
+            data = response;
+            console.log(response)
         }
         )
         .catch((error) => {

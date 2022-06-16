@@ -24,7 +24,18 @@ router.post('/', async function (req, res) {
 // Join game
 router.put('/:id/join', async function (req, res) {
     var result = data.joinGame(req.params.id, req.body.username);
-    return res.status(result.status).send(result.send);
+    return res.contentType('json')
+        .cookie('uwu', 'uwu', {
+            maxAge: 1000 * 60 * 60 * 24 * 7,
+            httpOnly: true,
+            sameSite: true,
+            secure: true
+        })
+        .cookie('gameId', req.params.id)
+        .cookie('username', req.body.username)
+        .status(result.status)
+        .send(result.send)
+
 });
 
 // Start game
