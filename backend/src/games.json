@@ -5,6 +5,9 @@
             0,
             1
         ],
+        "blackCards": [],
+        "round": 1,
+        "remainingTime": 60,
         "users": [
             {
                 "id": 0,

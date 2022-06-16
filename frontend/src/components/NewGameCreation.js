@@ -12,9 +12,13 @@ import CardsList from './CardsList';
 import Theme from '../Theme';
 import { useEffect, useState } from 'react';
 import { getDecks, createGame } from '../connection/connection';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function NewGameCreation() {
+    const navigate = useNavigate();
+
     const [checked, setChecked] = useState([]);
     const [deck, setDeck] = useState({ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] });
     const [decks, setDecks] = useState([{ name: "deck1", id: "1", cards: [{ id: 1, content: "uwu" }] }, { name: "deck2", id: "2" }]);
@@ -53,6 +57,8 @@ export default function NewGameCreation() {
         // Get a list of id of decks
         console.log(checked);
         await createGame(username, checked);
+        navigate('/lobby')
+
     }
 
     useEffect(() => {
