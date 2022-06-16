@@ -77,6 +77,11 @@ function startGame(gameId) {
     return { "status": 200, "send": game };
 }
 
+function getUsers(gameId) {
+    var game = getGame(gameId);
+    return game.users;
+}
+
 module.exports = {
     getDecks,
     getDeck,
@@ -86,4 +91,5 @@ module.exports = {
     createGame,
     joinGame,
     startGame,
+    getUsers
 }
