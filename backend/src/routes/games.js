@@ -44,9 +44,4 @@ router.put('/:id/start', async function (req, res) {
     return res.status(result.status).send(result.send);
 });
 
-// Get users of game 
-router.get('/:id/users', async function (req, res) {
-    var users = data.getUsers(req.params.id);
-    return res.status(200).send(JSON.stringify(users));
-});
 module.exports = router;

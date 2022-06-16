@@ -9,7 +9,7 @@
             {
                 "id": 0,
                 "username": "user1",
-                "owner": false,
+                "owner": true,
                 "points": 0,
                 "cards": [
                     {

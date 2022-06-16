@@ -8,6 +8,9 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import StarIcon from '@mui/icons-material/Star';
+import PersonIcon from '@mui/icons-material/Person';
 const cookies = new Cookies();
 
 export default function CardsList() {
@@ -33,6 +36,9 @@ export default function CardsList() {
                 {users.map((item, index) => (
                     <ListItem disablePadding>
                         <ListItemButton>
+                            <ListItemIcon>
+                                {item.owner ? <StarIcon /> : <PersonIcon />}
+                            </ListItemIcon>
                             <ListItemText primary={item.username} />
                         </ListItemButton>
                     </ListItem>

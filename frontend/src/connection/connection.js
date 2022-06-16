@@ -93,7 +93,7 @@ export const joinGame = async (gameId, username) => {
 export const getUsers = async (gameID) => {
     let data;
     await axios
-        .get("http://localhost:3001/games/" + gameID + "/users")
+        .get("http://localhost:3001/games/" + gameID)
         .then((response) => {
             data = response.data;
         }
@@ -114,5 +114,5 @@ export const getUsers = async (gameID) => {
         );
 
 
-    return data;
+    return data.users;
 }
