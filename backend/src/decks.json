@@ -51,6 +51,21 @@
                 "type": "black",
                 "id": 9,
                 "content": "j"
+            },
+            {
+                "type": "black",
+                "id": 10,
+                "content": "h"
+            },
+            {
+                "type": "black",
+                "id": 11,
+                "content": "h"
+            },
+            {
+                "type": "black",
+                "id": 12,
+                "content": "h"
             }
         ]
     },
